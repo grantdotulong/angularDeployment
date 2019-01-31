@@ -1,0 +1,30 @@
+<div class="create">
+  <h2>New Product:</h2>
+  <form class="form" (submit) = "createProduct()">
+      <p>Name:</p> <p class="errors">{{nameError}}</p>
+      <!-- frontend validation(real-time) -->
+      <div *ngIf="name.errors && nameError==null">
+          <p class="errors" *ngIf="name.errors.required">Name field is required!</p>
+          <p class="errors" *ngIf="name.errors.minlength">Name field has to be greater than 4 characters!</p>
+      </div>
+      <input type="text" name="name" [(ngModel)]="newProduct.name" #name="ngModel"
+             required
+             minlength="4"
+      />
+      <p>Quantity:</p> <p class="errors">{{quantityError}}</p>
+      <div *ngIf="quantity.errors && quantityError==null">
+        <p class="errors" *ngIf="quantity.errors != null">Quantity field is required!</p>
+      </div>
+      <input type="text" name="quantity" [(ngModel)]="newProduct.quantity" #quantity="ngModel"
+             required
+      />
+      <p>Price:</p> <p class="errors">{{priceError}}</p>
+      <div *ngIf="price.errors && priceError==null">
+          <p class="errors" *ngIf="price.errors != null">Price field is required!</p>
+      </div>
+      <input type="text" name="price" [(ngModel)]="newProduct.price" #price="ngModel"
+             required
+      />
+      <input *ngIf="quantity.errors==null && price.errors==null && name.errors==null" type="submit" value="Create"/>
+  </form>
+</div>

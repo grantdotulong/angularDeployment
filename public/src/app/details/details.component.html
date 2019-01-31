@@ -1,0 +1,8 @@
+<div class="details">
+    <h2>Product Details</h2>
+    <p>Name: {{product.name}}</p>
+    <p>Qty: {{product.quantity}}</p>
+    <p>Price: ${{product.price}}</p>
+    <button (click)="goHome()">Back</button>
+    <button *ngIf="product.quantity == 0" (click)="deleteProduct(product._id)">Delete</button>
+</div>
